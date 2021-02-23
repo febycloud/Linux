@@ -1,0 +1,73 @@
+,CustomerID,MonthlyCharges,TotalCharges,PaymentMethod,Churn
+0,abc78,29.85,109.9,Electronic check,yes
+1,abc24,56.95,N/A,Mailed check,yes
+2,abc14,N/A,108.15,--,yes
+3,abc2,42.3,1840.75,Bank transfer,no
+4,abc97,70.7,N/A,Electronic check,no
+5,abc79,N/A,820.5,--,yes
+6,abc93,89.1,1949.4,Credit card,no
+7,abc19,N/A,N/A,--,yes
+8,abc29,104.8,3046.05,Electronic check,no
+9,abc18,54.1,354.95,Electronic check,no
+10,abc8,55.9,174,Electronic check,no
+11,abc21,113,288,Mailed check,no
+12,abc55,N/A,N/A,--,yes
+13,abc90,49,271,--,yes
+14,abc39,88,321,--,yes
+15,abc85,35,166,Credit card,no
+16,abc41,114,N/A,Electronic check,no
+17,abc13,N/A,264,Electronic check,no
+18,abc98,107,203.12,--,yes
+19,abc88,69,322,Electronic check,yes
+20,abc65,55,116,--,no
+21,abc30,N/A,338,Credit card,no
+22,abc70,92,356,Mailed check,yes
+23,abc67,115.56,N/A,Mailed check,no
+24,abc43,78,174,Mailed check,yes
+25,abc75,42,335,--,yes
+26,abc12,59,281,Mailed check,yes
+27,abc80,40,306,Mailed check,no
+28,abc60,113.5,276,Mailed check,no
+29,abc17,85,N/A,Mailed check,yes
+30,abc36,N/A,321,--,yes
+31,abc25,55,195.11,Credit card,yes
+32,abc87,71,381,Credit card,yes
+33,abc49,71,147,Credit card,yes
+34,abc92,114,297,Credit card,no
+35,abc37,36,361,Credit card,no
+36,abc68,37,N/A,--,yes
+37,abc38,47,142,--,no
+38,abc61,N/A,362,--,yes
+39,abc45,35,153,--,no
+40,abc74,31,181,--,yes
+41,abc4,N/A,N/A,--,no
+42,abc27,53,231,--,yes
+43,abc7,104,N/A,Electronic check,yes
+44,abc53,110,376,Electronic check,yes
+45,abc1,73,187,--,no
+46,abc34,88,340,Electronic check,no
+47,abc15,105.01,303,Electronic check,no
+48,abc77,106,266.66,Electronic check,yes
+49,abc31,109,N/A,--,yes
+50,abc63,62,344,Bank transfer,yes
+51,abc9,N/A,278,Bank transfer,yes
+52,abc52,69,210,Bank transfer,yes
+53,abc99,40.12,170,--,no
+54,abc76,68,220,Bank transfer,yes
+55,abc81,79,N/A,Electronic check,yes
+56,abc23,58.4,161,Credit card,yes
+57,abc91,93,254,Electronic check,no
+58,abc66,66,287,Credit card,no
+59,abc72,48,281.34,--,yes
+60,abc10,N/A,322,--,yes
+61,abc62,34,164,--,no
+62,abc46,114.12,N/A,Electronic check,yes
+63,abc73,105,300,Credit card,yes
+64,abc22,N/A,N/A,Mailed check,yes
+65,abc100,85,265,Bank transfer,yes
+66,abc35,113,N/A,--,no
+67,abc59,52,175,--,no
+68,abc32,N/A,227,Credit card,no
+69,abc71,N/A,369.12,Credit card,yes
+70,abc11,77,361,--,yes
+71,abc20,113,N/A,Electronic check,yes

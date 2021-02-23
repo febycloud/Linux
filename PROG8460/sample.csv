@@ -1,0 +1,73 @@
+﻿CustomerID,MonthlyCharges,TotalCharges,PaymentMethod,Churn
+abc78,29.85,109.9,Electronic check,yes
+abc24,56.95,na,Mailed check,yes
+abc14,,108.15,--,yes
+abc2,42.3,1840.75,Bank transfer,no
+abc97,70.7,NA,Electronic check,no
+abc79,Nan,820.5,--,yes
+abc93,89.1,1949.4,Credit card,no
+abc19,,N/A,,yes
+abc29,104.8,3046.05,Electronic check,no
+abc18,54.1,354.95,Electronic check,no
+abc8,55.9,174,Electronic check,no
+abc21,113,288,Mailed check,no
+abc55,,NA,--,yes
+abc90,49,271,,yes
+abc39,88,321,--,yes
+abc85,35,166,Credit card,no
+abc41,114,N/A,Electronic check,no
+abc13,,264,Electronic check,no
+abc98,107,203.12,--,yes
+abc88,69,322,Electronic check,yes
+abc65,55,116,,no
+abc30,Nan,338,Credit card,no
+abc70,92,356,Mailed check,yes
+abc67,115.56,na,Mailed check,no
+abc43,78,174,Mailed check,yes
+abc75,42,335,,yes
+abc12,59,281,Mailed check,yes
+abc80,40,306,Mailed check,no
+abc60,113.5,276,Mailed check,no
+abc17,85,,Mailed check,yes
+abc36,,321,,yes
+abc25,55,195.11,Credit card,yes
+abc87,71,381,Credit card,yes
+abc49,71,147,Credit card,yes
+abc92,114,297,Credit card,no
+abc37,36,361,Credit card,no
+abc68,37,na,--,yes
+abc38,47,142,--,no
+abc61,,362,,yes
+abc45,35,153,,no
+abc74,31,181,--,yes
+abc4,Nan,,--,no
+abc27,53,231,--,yes
+abc7,104,na,Electronic check,yes
+abc53,110,376,Electronic check,yes
+abc1,73,187,,no
+abc34,88,340,Electronic check,no
+abc15,105.01,303,Electronic check,no
+abc77,106,266.66,Electronic check,yes
+abc31,109,,,yes
+abc63,62,344,Bank transfer,yes
+abc9,,278,Bank transfer,yes
+abc52,69,210,Bank transfer,yes
+abc99,40.12,170,,no
+abc76,68,220,Bank transfer,yes
+abc81,79,N/A,Electronic check,yes
+abc23,58.4,161,Credit card,yes
+abc91,93,254,Electronic check,no
+abc66,66,287,Credit card,no
+abc72,48,281.34,,yes
+abc10,Nan,322,,yes
+abc62,34,164,--,no
+abc46,114.12,na,Electronic check,yes
+abc73,105,300,Credit card,yes
+abc22,,,Mailed check,yes
+abc100,85,265,Bank transfer,yes
+abc35,113,NA,,no
+abc59,52,175,--,no
+abc32,Nan,227,Credit card,no
+abc71,,369.12,Credit card,yes
+abc11,77,361,--,yes
+abc20,113,,Electronic check,yes
