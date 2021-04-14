@@ -1,0 +1,62 @@
+--Fei Yun Lab6
+--8680643
+
+spark-shell --master yarn --jars /shared/commons-csv-1.5.jar,/shared/spark-csv_2.10-1.5.0.jar
+
+:paste
+
+import org.apache.spark.sql.functions._
+import org.apache.spark.ml.feature.{VectorAssembler}
+import org.apache.spark.ml.Pipeline
+import org.apache.spark.ml.regression.{LinearRegression}
+import org.apache.spark.ml.tuning.{CrossValidator, CrossValidatorModel, ParamGridBuilder}
+import org.apache.spark.ml.evaluation.{RegressionEvaluator}
+import org.apache.spark.ml.param.ParamMap
+import org.apache.spark.sql.types.{DoubleType}
+import org.apache.spark.sql.SQLContext
+
+val sqlContext = new SQLContext(sc)
+val data_2015 = sqlContext.read.format("com.databricks.spark.csv")
+.option("header", "true") 
+.option("inferSchema", "true")
+.load("hdfs://localhost:8020/BigData/happiness.csv")
+
+val rank_score = data_2015.select(col("Happiness Rank").cast(DoubleType), col("Happiness Score").cast(DoubleType),col("Social support").cast(DoubleType),col("Generosity").cast(DoubleType))
+
+val Array(trainingData, testData) = rank_score.randomSplit(Array(0.8, 0.2), 1111) 
+
+val assembler = new VectorAssembler()
+.setInputCols(Array("Happiness Score","Social support","Generosity"))
+.setOutputCol("assembled-features")
+
+val lr = new LinearRegression() 
+.setFeaturesCol("assembled-features")
+.setLabelCol("Happiness Rank")
+
+val pipeline = new Pipeline()
+.setStages(Array(assembler, lr))
+
+val evaluator = new RegressionEvaluator()
+.setLabelCol("Happiness Rank")
+.setPredictionCol("prediction")
+.setMetricName("r2")
+
+val cross_validator = new CrossValidator()
+.setEstimator(pipeline)
+.setEvaluator(evaluator)
+.setEstimatorParamMaps(new ParamGridBuilder().build)
+.setNumFolds(3)
+
+val cvModel = cross_validator.fit(trainingData)
+
+val predictions = cvModel.transform(testData)
+
+predictions
+ .select(col("Happiness Rank"), col("Happiness Score"), col("Social support"),col("Generosity"),col("prediction"))
+ .write
+ .format("csv")
+ .save("hdfs://localhost:8020/BigData/happiness/output/")
+
+val r2 = evaluator.evaluate(predictions)
+
+println("r-squared on test data = " + r2)

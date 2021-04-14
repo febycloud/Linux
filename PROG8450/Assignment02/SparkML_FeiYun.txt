@@ -1,0 +1,78 @@
+--Fei Yun Assignment
+--8680643
+
+
+:paste
+
+import org.apache.spark.sql.functions._
+import org.apache.spark.sql.expressions.Window
+import org.apache.spark.ml.feature.{VectorAssembler, StringIndexer}
+import org.apache.spark.ml.Pipeline
+import org.apache.spark.ml.classification.{RandomForestClassificationModel, RandomForestClassifier}
+import org.apache.spark.ml.tuning.{CrossValidator, CrossValidatorModel, ParamGridBuilder}
+import org.apache.spark.ml.evaluation.{MulticlassClassificationEvaluator}
+import org.apache.spark.ml.param.ParamMap
+import org.apache.spark.sql.types.{IntegerType, DoubleType}
+
+
+val data = sqlContext.read.format("com.databricks.spark.csv")
+.option("header", "true") 
+.option("inferSchema", "true")
+.load("hdfs://localhost:8020/BigData/COVID19.csv")
+
+val ICU_analyse=data.select(
+col("Age Group"),
+col("Client Gender"),
+col("Ever in ICU")
+)
+
+val Array(trainingData, testData) = ICU_analyse.randomSplit(Array(0.8, 0.2), 1111) 
+
+val age_index = new StringIndexer()
+  .setInputCol("Age Group")
+  .setOutputCol("age")
+
+
+val sex_index = new StringIndexer()
+  .setInputCol("Client Gender")
+  .setOutputCol("sex")
+
+val ICU_index = new StringIndexer()
+  .setInputCol("Ever in ICU")
+  .setOutputCol("ICU")
+
+val assembler= new VectorAssembler()
+.setInputCols(Array("age","sex"))
+.setOutputCol("assembled-features")
+
+val rf = new RandomForestClassifier()
+.setFeaturesCol("assembled-features")
+.setLabelCol("ICU")
+.setSeed(1234)
+
+val pipeline = new Pipeline()
+.setStages(Array(age_index,sex_index,ICU_index,assembler, rf))
+	
+val evaluator = new MulticlassClassificationEvaluator()
+.setLabelCol("ICU")
+.setPredictionCol("prediction")
+.setMetricName("precision")
+
+val paramGrid = new ParamGridBuilder()  
+.addGrid(rf.maxBins,Array(117,119))
+.addGrid(rf.maxDepth, Array(3, 5))
+.addGrid(rf.impurity, Array("entropy")).build()
+	
+val cross_validator = new CrossValidator()
+.setEstimator(pipeline)
+.setEvaluator(evaluator)
+.setEstimatorParamMaps(paramGrid)
+.setNumFolds(3)
+
+val cvModel = cross_validator.fit(trainingData)
+
+val predictions = cvModel.transform(testData)
+
+val accuracy = evaluator.evaluate(predictions)
+
+println("accuracy on test data = " + accuracy)
